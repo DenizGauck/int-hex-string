@@ -42,3 +42,10 @@ Standard `Number.toString(16)` and `parseInt(hex, 16)` are limited to signed 32-
 ### `SignedMode`
 
 Object with two frozen string values: `'unsigned'` and `'two-complement'`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
